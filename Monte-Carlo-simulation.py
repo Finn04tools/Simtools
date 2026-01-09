@@ -46,6 +46,7 @@ print("Generated seeds:")
 print(seeds)
 print("\nSimulation results:\n")
 
-for seed in seeds:
-    probability = monte_carlo_simulation(seed)
-    print(f"Seed {seed}: {probability:.4%}")
+for s in seeds:
+    probability = monte_carlo_simulation(s)
+    print(f"Seed {s}: {probability:.4%}")
+
