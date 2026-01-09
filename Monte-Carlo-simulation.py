@@ -14,16 +14,18 @@ rounds = 200
 simulations = 10000
 p_gewinn = 18 / 37
 
-"""Bet is the amount of money set for each round.
+"""
+Bet is the amount of money set for each round.
 Rounds is the amount of rounds per simulation.
 Simulations equals the total amount of simulations.
+p_gewinn is the winning propability 
 the parameters set the requirements for the simulation
 """
 
 def monte_carlo_simulation(simulation_seed):
 
     random.seed(simulation_seed)
-    minus_100_oder_mehr = 0
+    minus_100 = 0
 
     for _ in range(simulations):
         kapital = 0
@@ -35,10 +37,13 @@ def monte_carlo_simulation(simulation_seed):
                 kapital -= bet
 
         if kapital <= -100:
-            minus_100_oder_mehr += 1
+            minus_100 += 1
 
-    return minus_100_oder_mehr / simulations
-
+    return minus_100 / simulations
+"""
+Initializes the random number generator with the provided seed to ensure reproducibility.
+Repeats the roulette simulation for a predefined number of seeds (simulations).
+"""
 random.seed(10)
 seeds = [random.randint(1, 1000) for _ in range(10)]
 
@@ -49,4 +54,5 @@ print("\nSimulation results:\n")
 for s in seeds:
     probability = monte_carlo_simulation(s)
     print(f"Seed {s}: {probability:.4%}")
+
 
